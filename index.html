@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- CUSTOMIZE: Change the browser tab title -->
+  <title>For Kate ❤️</title>
+
+  <!-- Google Fonts — luxury serif + clean sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       FLOATING PETALS — pure CSS, no images needed
+       ============================================================ -->
+  <div class="petals" aria-hidden="true">
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+  </div>
+
+  <!-- ============================================================
+       PARTICLE CANVAS — twinkling stars
+       ============================================================ -->
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+  <!-- ============================================================
+       PROGRESS DOTS — section indicator
+       ============================================================ -->
+  <nav class="progress-dots" aria-label="Section progress">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <span class="dot" data-index="2"></span>
+    <span class="dot" data-index="3"></span>
+    <span class="dot" data-index="4"></span>
+    <span class="dot" data-index="5"></span>
+  </nav>
+
+  <!-- ============================================================
+       MUSIC BUTTON
+       CUSTOMIZE: Replace "birthday-music.mp3" with your audio file
+       ============================================================ -->
+  <button class="music-btn" id="musicBtn" aria-label="Play music">
+    <span class="music-icon">♪</span>
+  </button>
+  <audio id="bgMusic" loop>
+    <!-- Local piano track — "Thinking Out Loud" by Kevin MacLeod (incompetech.com) -->
+    <!-- Licensed under Creative Commons: By Attribution 4.0 License -->
+    <!-- CUSTOMIZE: Replace with any local .mp3 file in the same folder -->
+    <source src="birthday-music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ============================================================
+       SECTION 1 — OPENING
+       ============================================================ -->
+  <section id="opening" class="section active" data-bg="opening">
+    <div class="section-inner">
+      <!-- CUSTOMIZE: Change "For Kate" to any name -->
+      <p class="eyebrow stagger-1">For Kate ❤️</p>
+      <h1 class="opening-title stagger-2">
+        <!-- Typewriter text is injected here by JS -->
+        <span id="typewriterTarget"></span><span class="cursor">|</span>
+      </h1>
+      <button class="cta-btn stagger-3" id="openSurpriseBtn">
+        Open Your Surprise <span class="btn-sparkle">✨</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2 — BIRTHDAY REVEAL
+       ============================================================ -->
+  <section id="reveal" class="section" data-bg="reveal">
+    <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+    <div class="section-inner">
+      <!-- CUSTOMIZE: Change name and date -->
+      <p class="eyebrow stagger-1">August 20th</p>
+      <h2 class="reveal-title stagger-2">
+        Happy Birthday,<br /><span class="name-gradient">Kate</span>
+      </h2>
+      <p class="reveal-emoji stagger-3">🎂 ❤️</p>
+      <p class="body-text stagger-4">
+        Today isn't just another day. It's the day someone incredibly special
+        came into this world — and I'm grateful that somehow, our paths crossed.
+      </p>
+      <button class="ghost-btn stagger-5" id="toMessageBtn">Continue ↓</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3 — LOVE MESSAGE
+       ============================================================ -->
+  <section id="message" class="section" data-bg="message">
+    <div class="section-inner">
+      <p class="section-label stagger-1">Something I Want You To Know…</p>
+      <!-- CUSTOMIZE: Edit the love message paragraphs below -->
+      <div class="message-card stagger-2">
+        <p>
+          Kate, I hope you know just how special you are to me. You bring a kind
+          of happiness into my life that's difficult to put into words. I appreciate
+          your presence, your heart, your smile, and all the little things that
+          make you <em>you</em>.
+        </p>
+        <p>
+          I hope this new chapter brings you everything you're wishing for —
+          happiness, peace, unforgettable memories, and every beautiful thing
+          you deserve.
+        </p>
+        <p class="message-and">And most importantly…</p>
+        <p class="love-declaration" id="loveDeclaration">
+          <span class="love-text">I love you.</span>
+          <span class="love-heart" aria-hidden="true">❤️</span>
+        </p>
+      </div>
+      <button class="ghost-btn stagger-3" id="toMemoriesBtn">Keep Going ↓</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4 — MEMORY CARDS
+       CUSTOMIZE: Edit .card-back text for each card
+       Add more cards by duplicating a .memory-card block
+       ============================================================ -->
+  <section id="memories" class="section" data-bg="memories">
+    <div class="section-inner">
+      <p class="section-label stagger-1">A Few Things I Love About You</p>
+      <p class="cards-hint stagger-2">Tap each card to reveal ✨</p>
+      <div class="cards-grid stagger-3">
+
+        <div class="memory-card" tabindex="0" aria-label="Tap to reveal a memory">
+          <div class="card-inner">
+            <div class="card-front"><span>✨</span></div>
+            <div class="card-back">Your smile 😊</div>
+          </div>
+        </div>
+
+        <div class="memory-card" tabindex="0" aria-label="Tap to reveal a memory">
+          <div class="card-inner">
+            <div class="card-front"><span>✨</span></div>
+            <div class="card-back">The way you make ordinary moments feel special</div>
+          </div>
+        </div>
+
+        <div class="memory-card" tabindex="0" aria-label="Tap to reveal a memory">
+          <div class="card-inner">
+            <div class="card-front"><span>✨</span></div>
+            <div class="card-back">Your personality ❤️</div>
+          </div>
+        </div>
+
+        <div class="memory-card" tabindex="0" aria-label="Tap to reveal a memory">
+          <div class="card-inner">
+            <div class="card-front"><span>✨</span></div>
+            <div class="card-back">The little things you do</div>
+          </div>
+        </div>
+
+        <div class="memory-card" tabindex="0" aria-label="Tap to reveal a memory">
+          <div class="card-inner">
+            <div class="card-front"><span>✨</span></div>
+            <div class="card-back">Simply being you 🌸</div>
+          </div>
+        </div>
+
+        <!-- CUSTOMIZE: Copy the block above to add more cards -->
+
+      </div>
+
+      <!-- ============================================================
+           PHOTO SECTION (optional)
+           CUSTOMIZE: Remove the comment tags and add Kate's photo paths
+           ============================================================
+      <div class="photo-grid stagger-4">
+        <img src="photo1.jpg" alt="Kate" class="kate-photo" />
+        <img src="photo2.jpg" alt="Kate" class="kate-photo" />
+        <img src="photo3.jpg" alt="Kate" class="kate-photo" />
+      </div>
+      -->
+
+      <button class="ghost-btn stagger-4" id="toWishBtn">One More Thing ↓</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5 — BIRTHDAY WISH
+       ============================================================ -->
+  <section id="wish" class="section" data-bg="wish">
+    <div class="section-inner">
+      <p class="section-label stagger-1">My Wish For You</p>
+      <!-- CUSTOMIZE: Edit the wish text below -->
+      <div class="wish-text stagger-2">
+        <p>
+          May this year bring you closer to everything you've dreamed about.
+          May you laugh more, love deeply, grow beautifully, and create memories
+          you'll never forget.
+        </p>
+        <p class="wish-closing">
+          You deserve a year as beautiful as your heart.
+        </p>
+      </div>
+      <button class="ghost-btn stagger-3" id="toFinalBtn">Almost There ↓</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6 — FINAL SURPRISE
+       ============================================================ -->
+  <section id="final" class="section" data-bg="final">
+    <div class="section-inner">
+      <p class="eyebrow" id="finalPre">One last thing…</p>
+      <h2 class="final-title" id="finalTitle">
+        Happy Birthday,<br /><span class="name-gradient">Kate</span> ❤️
+      </h2>
+      <p class="final-sub" id="finalSub">
+        I love you — today, on your birthday, and every day after.
+      </p>
+      <button class="cta-btn" id="replayBtn">
+        Replay <span class="btn-sparkle">✨</span>
+      </button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
